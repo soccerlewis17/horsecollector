@@ -12,3 +12,11 @@ body {
     padding-top: 0;
     text-align: right;
   }
+
+#nav-logo {
+    text-decoration: underline dotted;
+}
+
+#index_header {
+    text-decoration: underline dotted;
+}

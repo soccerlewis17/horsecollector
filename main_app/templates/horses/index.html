@@ -2,26 +2,24 @@
 
 
 {% block content %}
-    <h1>Horse List</h1>
+<h1 id="index_header">Horse List</h1>
 
-
-{% for horse in horses %}
-<div class="card">
-    <div class="card-content">
-        <span class="card-title">{{ horse.name }}</span>
-        <p>Breed: {{ horse.breed }}</p>
-        <p>Description: {{ horse.description }}</p>
-
-        
-        {% if horse.age > 0 %}
+<div class="container-md">
+    <div class="row g-4">
+    {% for horse in horses %}
+        <div class="col-4 border bg-light">
+            <span class="h4">{{ horse.name }}</span>
+            <p>Breed: {{ horse.breed }}</p>
+            <p>Description: {{ horse.description }}</p>        
+            {% if horse.age > 0 %}
             <p>Age: {{ horse.age }}</p>            
-        {% else %}
+            {% else %}
             <p>Age: Foal</p>
-        {% endif %}
-            
+            {% endif %}
+        </div>    
+    {% endfor %}
     </div>
 </div>
-{% endfor %}
     
 
 
