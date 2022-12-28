@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+<div class="container-md text-center">
+    <div class="row g-4">
+        <div class="col-4 border bg-light text-center">
+            <p class="h4">{{ horse.name }}</p>
+            <p>Breed: {{ horse.breed }}</p>       
+            {% if horse.age > 0 %}
+            <p>Age: {{ horse.age }}</p>            
+            {% else %}
+            <p>Age: Foal</p>
+            {% endif %}
+            <p>Description: {{ horse.description }}</p>
+            <div>
+                <a class="btn btn-info" href="{% url 'horses_update' horse.id %}">Edit</a>
+                <a class="btn btn-danger" href="{% url 'horses_delete' horse.id %}">Delete</a>
+            </div>
+        </div>
+        <div class="col-4">
+            <form action="{% url 'add_feeding' horse.id %}" method="post">
+                {% csrf_token %}
+                {{ feeding_form.as_p }}
+                <input type="submit" class="btn btn-outline-secondary btn-sm" value="Add Feeding">
+              </form>
+            <table class="table table-striped">
+              <thead>
+                <tr><th>Date</th><th>Meal</th></tr>
+              </thead>
+              <tbody>
+                {% for feeding in horse.feeding_set.all %}
+                  <tr>
+                    <td>{{feeding.date}}</td>
+                    <td>{{feeding.get_meal_display}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>    
+    </div>
+</div>
+
+{% endblock content %}
+    
