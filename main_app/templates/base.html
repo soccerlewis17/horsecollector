@@ -16,6 +16,8 @@
     <nav class="container-fluid">
       <div class="d-flex">
           <div class="mr-auto p-2"><a class="nav-link active" href="/">HorseCollector</a></div>
+          <div class="p-2"><a class="nav-link active" href="{% url 'toys_create' %}">Add a Toy</a></div>
+          <div class="p-2"><a class="nav-link active" href="{% url 'toys_index' %}">View All Toys</a></div>
           <div class="p-2"><a class="nav-link active" href="{% url 'index' %}">View All My Horses</a></div>
           <div class="p-2"><a class="nav-link active" href="{% url 'about' %}">About</a></div>
       </div>
